@@ -1,0 +1,21 @@
+{
+  "name": "cs221_webdev_charlesnevalga",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/cedieboy07/CS221_WEBDEV_CHARLESNEVALGA#readme",
+  "bugs": {
+    "url": "https://github.com/cedieboy07/CS221_WEBDEV_CHARLESNEVALGA/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cedieboy07/CS221_WEBDEV_CHARLESNEVALGA.git"
+  },
+  "license": "ISC",
+  "author": "charles daniel nevalga",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  }
+}
