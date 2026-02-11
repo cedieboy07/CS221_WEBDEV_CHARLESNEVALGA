@@ -1,12 +1,13 @@
-import { AuthProvider } from "./contexts/AuthContext.jsx";
-import Login from "./pages/Login.jsx";
+import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./pages/Login";
+import Inventory from "./pages/Inventory";
+
 import "./styles/App.css";
 
 function App() {
   return (
-    <AuthProvider>
-      <Login></Login>
-    </AuthProvider>
+    <Inventory>
+    </Inventory>
   );
 }
 
