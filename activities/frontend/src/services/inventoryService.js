@@ -42,3 +42,5 @@ export const inventoryService = {
     return data;
   },
 };
+
+export default inventoryService;

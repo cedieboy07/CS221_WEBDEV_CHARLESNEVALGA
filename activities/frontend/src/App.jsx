@@ -1,13 +1,22 @@
 import { AuthProvider } from "./contexts/AuthContext";
-import Login from "./pages/Login";
-import Inventory from "./pages/Inventory";
+import Login from "./pages/Login.jsx";
+import Inventory from "./pages/Inventory.jsx";
+import Landing from "./pages/Landing.jsx";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
 
 function App() {
   return (
-    <Inventory>
-    </Inventory>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/inventory" element={<Inventory />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

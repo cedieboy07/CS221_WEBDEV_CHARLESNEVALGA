@@ -1,15 +1,27 @@
-import React, { useState } from "react";
 import Card from "../components/Card";
 import Input from "../components/Input";
-import TextArea from "../components/TextArea";
 import Button from "../components/Button";
-import productService from "../services/inventoryService";
-import "./Login.css";
+import "../pages/Login.css";
+import { use, useEffect, useState } from "react";
+import TextArea from "../components/TextArea";
+import slugify from "slugify";
+import { useAuth } from "../contexts/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
-export default function Inventory() {
-  const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState();
+const Inventory = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    slug: "",
+    description: "",
+    price: 0,
+  });
+
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState();
+  const [slug, setSlug] = useState("");
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +35,27 @@ export default function Inventory() {
     e.preventDefault();
 
     try {
-      const response = await productService.create(formData);
-      console.log(response);
+      alert("Product Page");
     } catch (error) {
-      setErrors({ message: error.message });
+      setErrors({ error: error.message });
     }
   };
+
+  useEffect(() => {
+    if (formData.name) {
+      const generatedSlug = slugify(formData.name, {
+        lower: true,
+        strict: true,
+      });
+      setSlug(generatedSlug);
+    }
+  }, [formData.name]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   return (
     <Card title="Create Product">
@@ -37,39 +64,35 @@ export default function Inventory() {
           label="Name"
           type="text"
           name="name"
-          value={formData.email}
+          value={formData.name}
           onChange={handleChange}
-          error={errors.email}
-          placeholder="Enter your product name"
+          error={errors.name}
+          placeholder="Enter product name"
           required
         />
         <Input
           label="Slug"
           type="text"
           name="slug"
-          value={formData.email}
+          value={slug}
           onChange={handleChange}
-          error={errors.slugs}
-          required
+          error={errors.slug}
+          disabled
         />
         <TextArea
           label="Description"
           name="description"
+          error={errors.description}
           rows={10}
           cols={40}
-          style={{ resize: "none" }}
-          onChange={handleChange}
-          error={errors.description}
         />
-        {formData.description}
         <Input
           label="Price"
           type="number"
           name="price"
           value={formData.price}
-          onChange={handleChange}
           error={errors.price}
-          required
+          onChange={handleChange}
         />
         <Button type="submit" loading={loading}>
           Save Product
@@ -77,4 +100,6 @@ export default function Inventory() {
       </form>
     </Card>
   );
-}
+};
+
+export default Inventory;
