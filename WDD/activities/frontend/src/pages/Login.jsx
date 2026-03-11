@@ -4,7 +4,6 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import "./Login.css";
 import { useAuth } from "../contexts/AuthContext";
-
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",

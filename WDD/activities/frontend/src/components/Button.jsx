@@ -1,4 +1,4 @@
-import "../components/Button.css";
+import "./Button.css";
 
 const Button = ({ children, loading, variant = "primary", ...props }) => {
   return (
