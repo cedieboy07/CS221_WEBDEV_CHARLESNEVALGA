@@ -1,0 +1,202 @@
+/* Cart Page - Cozy Tavern Theme */
+
+.cart-page {
+  min-height: calc(100vh - 80px);
+}
+
+/* Cart Page Layout */
+.cart-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cart-container h1 {
+  text-align: center;
+  color: #722f37;                   /* Burgundy */
+  font-family: 'Georgia', serif;
+  margin-bottom: 30px;
+}
+
+/* Two-column layout: items on left, summary on right */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;               /* Align items to top */
+}
+
+/* Cart Items List */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual cart item row */
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto auto;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 20px;
+  border: 2px solid #8b5a2b;       /* Brown border */
+  border-radius: 10px;
+  background: #fff8f0;              /* Cream - same as product cards */
+}
+
+/* Product image in cart */
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #8b5a2b;
+}
+
+/* Item details */
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cart-item-details h3 {
+  color: #722f37;                  /* Burgundy */
+  margin: 0;
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+}
+
+.cart-item-description {
+  color: #5c4033;                  /* Medium brown - matches theme */
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.cart-item-price {
+  color: #c9a227;                  /* Gold */
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Quantity controls */
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-btn {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #8b5a2b;      /* Brown */
+  border-radius: 6px;
+  background: #722f37;             /* Burgundy */
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.quantity-btn:hover {
+  background: #8b3a42;             /* Lighter burgundy */
+}
+
+.quantity-value {
+  font-size: 1.1em;
+  font-weight: bold;
+  min-width: 30px;
+  text-align: center;
+  color: #3d2914;
+}
+
+/* Subtotal for each item */
+.cart-item-subtotal {
+  text-align: center;
+  min-width: 80px;
+}
+
+.cart-item-subtotal p {
+  margin: 0;
+  font-size: 0.85em;
+  color: #5c4033;                  /* Brown */
+}
+
+.subtotal-value {
+  font-weight: bold;
+  color: #722f37;                 /* Burgundy */
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Remove button */
+.remove-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background: #722f37;             /* Burgundy */
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-btn:hover {
+  background: #8b3a42;
+}
+
+/* Order Summary - Same styling as cart items */
+.cart-summary .card {
+  background: #fff8f0;             /* Same cream as cart items */
+  border: 3px solid #8b5a2b;       /* Same brown border */
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  color: #3d2914;
+  font-size: 1rem;
+}
+
+.summary-row.total {
+  font-size: 1.4em;
+  color: #722f37;
+  font-weight: bold;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 2px solid #8b5a2b;
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive: stack items on mobile */
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .cart-item {
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  
+  .cart-item-image {
+    grid-row: span 3;
+  }
+  
+  .cart-item-details {
+    grid-column: 2;
+  }
+  
+  .cart-item-quantity,
+  .cart-item-subtotal,
+  .remove-btn {
+    grid-column: 2;
+  }
+}

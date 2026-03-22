@@ -13,11 +13,17 @@ export const AuthProvider = ({ children }) => {
       setUser(currentUser);
     }
     setLoading(false);
-  }, []); //mouting
+  }, []);
 
   const login = async (credentials) => {
     const data = await authService.login(credentials);
-    setUser(data.user);
+    // Set the user in state from the response
+    setUser({
+      _id: data._id,
+      username: data.username,
+      email: data.email,
+      role: data.role,
+    });
     return data;
   };
 
@@ -27,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await authService.login();
+    await authService.logout();
     setUser(null);
   };
 
@@ -46,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth msut be used within an Auth provider");
+    throw new Error("useAuth must be used within an Auth provider");
   }
   return context;
 };

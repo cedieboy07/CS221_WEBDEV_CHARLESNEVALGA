@@ -3,13 +3,22 @@ import mongoose from "mongoose";
 
 export const create = async (req, res) => {
   try {
-    const { name, slug, description, price } = req.body;
-    const productExists = await Product.findOne({ slug });
-    if (productExists)
-      return res.status(400).json({ message: "Product Already Exists!" });
-    const product = await Product.create({ name, slug, description, price });
-    res.status(201).json({ message: "Product created successfully! " });
+    // We extract all fields from the request body
+    const { name, description, price, image, countInStock } = req.body;
+    
+    // We create a new product in the database
+    const product = await Product.create({
+      name,
+      description,
+      price,
+      image,
+      countInStock,
+    });
+    
+    // Success! Return 201 (Created) with the new product
+    res.status(201).json(product);
   } catch (error) {
+    // If something goes wrong, catch it and send error
     res.status(500).json({ message: error.message });
   }
 };
@@ -17,27 +26,56 @@ export const create = async (req, res) => {
 export const update = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, slug, description, price } = req.body;
+    const { name, description, price, image, countInStock } = req.body;
     const productExists = await Product.findById(id);
     if (!productExists)
       return res.status(400).json({ message: "Product Does Not Exists!" });
     const productFields = {
       name,
-      slug,
       description,
       price,
+      image,
+      countInStock,
       updatedAt: new Date(),
     };
-    const product = await Product.updateOne(
+    await Product.updateOne(
       { _id: new mongoose.Types.ObjectId(id) },
       { $set: productFields },
     );
-    res.status(200).json({ message: "Product updated successfully! " });
+    res.status(200).json({ message: "Product updated successfully!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export const logout = (req, res) => {
-  res.status(200).json({ message: "Logout successfully" });
+export const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    
+    if (!product) {
+      return res.status(404).json({ message: "Product not found!" });
+    }
+    
+    await Product.deleteOne({ _id: id });
+    res.status(200).json({ message: "Product deleted successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getAll = async (req, res) => {
+  // "req" = the request from the browser (asking for products)
+  // "res" = the response we send back to the browser
+  try {
+    // We use Product.find({}) to get ALL products from the database
+    // The empty {} means "give me everything"
+    const products = await Product.find({});
+    
+    // We send the products back with a success code (200 = OK)
+    res.status(200).json(products);
+  } catch (error) {
+    // If something goes wrong, we catch it and send an error
+    res.status(500).json({ message: error.message });
+  }
 };

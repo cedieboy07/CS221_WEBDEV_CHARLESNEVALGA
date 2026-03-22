@@ -1,0 +1,217 @@
+/* Product Details Page - Cozy Tavern Theme */
+
+.product-details-page {
+  min-height: 100vh;
+  background-color: #f5f0e8;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 20px;
+  color: #722f37;
+  font-family: 'Georgia', serif;
+}
+
+.product-details-container {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+/* Back Button */
+.back-button {
+  background: none;
+  border: none;
+  color: #722f37;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+  padding: 0;
+}
+
+.back-button:hover {
+  color: #c9a227;
+  text-decoration: underline;
+}
+
+/* Product Details Content */
+.product-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  background-color: #fff8f0;
+  border: 3px solid #8b5a2b;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+/* Product Image */
+.product-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  border: 3px solid #8b5a2b;
+  object-fit: cover;
+}
+
+/* Product Info */
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-name {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  color: #722f37;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.product-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #c9a227;
+  margin: 0;
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-description {
+  color: #5c4033;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.product-stock {
+  font-size: 1rem;
+}
+
+.in-stock {
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+.out-of-stock {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Quantity Selector */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-selector label {
+  font-weight: bold;
+  color: #3d2914;
+  font-size: 1rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #8b5a2b;
+  border-radius: 8px;
+  background-color: #722f37;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+  background-color: #8b3a42;
+}
+
+.quantity-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-controls input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 2px solid #8b5a2b;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  color: #3d2914;
+}
+
+.quantity-controls input:focus {
+  outline: none;
+  border-color: #722f37;
+}
+
+/* Product Actions */
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.add-to-cart-btn {
+  padding: 15px 30px !important;
+  font-size: 1.2rem !important;
+}
+
+.continue-shopping-btn {
+  padding: 12px 30px !important;
+  background-color: #8b5a2b !important;
+}
+
+.continue-shopping-btn:hover {
+  background-color: #a06830 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-details-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .product-name {
+    font-size: 2rem;
+  }
+  
+  .product-price {
+    font-size: 1.5rem;
+  }
+  
+  .product-image {
+    max-width: 100%;
+  }
+}

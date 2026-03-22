@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
 import { useAuth } from "../../contexts/AuthContext";
 
 const RegisterComponent = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -35,7 +37,8 @@ const RegisterComponent = () => {
         email: formData.email,
         password: formData.password,
       });
-      alert("Registration successful. You can now log in.");
+      alert("Registration successful! Please log in.");
+      navigate("/login");
     } catch (error) {
       setErrors({ error: error.message });
     } finally {
@@ -46,7 +49,7 @@ const RegisterComponent = () => {
   return (
     <form onSubmit={handleSubmit} className="login-form">
       {errors.error && (
-        <div className="alert-error" role="alert">
+        <div className="alert-error" role="alert" style={{ color: "#dc3545", marginBottom: "15px" }}>
           {errors.error}
         </div>
       )}

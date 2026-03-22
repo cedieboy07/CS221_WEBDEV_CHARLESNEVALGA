@@ -22,11 +22,23 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
+    // Cart field - stores the user's shopping cart
+    cart: [
+      {
+        _id: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        name: String,
+        description: String,
+        price: Number,
+        image: String,
+        countInStock: Number,
+        quantity: { type: Number, default: 1 },
+      },
+    ],
   },
   { timestamps: true },
 );
 
-//Middleware
+//Middleware - hash password before saving
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);

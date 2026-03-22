@@ -1,43 +1,72 @@
-/* Header Styles */
+/* Header Styles - Cozy Tavern Theme */
+
 .landing-header {
-  background-color: var(--background-white);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background-color: #722f37;       /* Burgundy */
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Shadow like depth */
+  width: 100%;                    /* Full width */
+  position: relative;              /* Remove dead space */
+  top: 0;                         /* Stick to top */
+  z-index: 1000;                  /* On top of everything */
 }
+
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  width: 100%;
 }
+
 .logo h2 {
   margin: 0;
-  color: var(--primary-blue);
-  font-size: 1.75rem;
+  color: #c9a227;                 /* Gold */
+  font-size: 1.5rem;
   font-weight: 700;
+  font-family: 'Georgia', serif;
 }
+
 .navigation {
   display: flex;
   gap: 2rem;
   align-items: center;
 }
+
 .navigation a {
-  color: var(--text-dark);
+  color: #fff8f0;                 /* Cream - light on dark */
   font-weight: 500;
   transition: color 0.3s ease;
   text-decoration: none;
+  font-size: 16px;
 }
+
 .navigation a:hover {
-  color: var(--primary-blue);
+  color: #c9a227;                 /* Gold on hover */
   text-decoration: none;
 }
+
 .auth-section {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+/* Legacy classes for compatibility */
+.landing-header h2 {
+  color: #c9a227;                 /* Gold */
+  margin: 0;
+  font-family: 'Georgia', serif;
+}
+
+.landing-header a {
+  color: #fff8f0;                 /* Cream */
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.landing-header a:hover {
+  color: #c9a227;                  /* Gold on hover */
 }

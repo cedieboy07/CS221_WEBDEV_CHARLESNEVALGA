@@ -1,6 +1,18 @@
-const API_URL = "http://localhost:3000/api/product";
+const API_URL = "/api/product";
 
 export const inventoryService = {
+  // This function fetches ALL products from the database
+  async getAll() {
+    const response = await fetch(`${API_URL}/`);
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetch products.");
+    }
+    
+    return data;
+  },
+
   async create(productData) {
     const response = await fetch(`${API_URL}/create`, {
       method: "POST",
@@ -34,9 +46,18 @@ export const inventoryService = {
       throw new Error(data.message || "Product update failed.");
     }
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+    return data;
+  },
+
+  async delete(id) {
+    const response = await fetch(`${API_URL}/delete/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to delete product.");
     }
 
     return data;

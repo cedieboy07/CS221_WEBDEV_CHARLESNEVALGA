@@ -1,0 +1,226 @@
+/* Order History Page - Cozy Tavern Theme */
+
+.order-history-page {
+  min-height: 100vh;
+  background-color: #f5f0e8;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-container,
+.error-container,
+.empty-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.loading-container p,
+.error-container p,
+.empty-container p {
+  color: #5c4033;
+  font-size: 1.1rem;
+}
+
+.error-container h2,
+.empty-container h2 {
+  color: #722f37;
+  font-family: 'Georgia', serif;
+  margin: 0;
+}
+
+/* Main Container */
+.order-history-container {
+  flex: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+.page-title {
+  font-family: 'Georgia', serif;
+  font-size: 2.5rem;
+  color: #722f37;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Orders List */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Order Card */
+.order-card {
+  background-color: #fff8f0;
+  border: 3px solid #8b5a2b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #8b5a2b;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-id {
+  font-weight: bold;
+  color: #722f37;
+  font-size: 1.1rem;
+}
+
+.order-date {
+  color: #5c4033;
+  font-size: 0.95rem;
+}
+
+.order-status {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.status-paid {
+  color: #2e7d32;
+}
+
+.status-pending {
+  color: #f59e0b;
+}
+
+/* Order Items */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f0e8;
+  border-radius: 8px;
+}
+
+.item-details {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.item-name {
+  color: #3d2914;
+  font-weight: 500;
+}
+
+.item-quantity {
+  color: #5c4033;
+  background-color: #722f37;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.item-price {
+  font-weight: bold;
+  color: #c9a227;
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Order Footer */
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 15px;
+  border-top: 2px solid #8b5a2b;
+  gap: 20px;
+}
+
+.shipping-info {
+  flex: 1;
+}
+
+.shipping-info p {
+  margin: 0;
+  color: #5c4033;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.shipping-info strong {
+  color: #3d2914;
+}
+
+.order-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.order-total span:first-child {
+  color: #5c4033;
+  font-size: 0.95rem;
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #722f37;
+  font-variant-numeric: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Continue Shopping */
+.continue-shopping {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .order-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .order-total {
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+  }
+}

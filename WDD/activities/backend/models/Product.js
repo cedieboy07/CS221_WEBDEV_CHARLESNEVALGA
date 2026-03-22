@@ -6,11 +6,6 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    slug: {
-      type: String,
-      unique: true,
-      lowercase: true,
-    }, // e.g., “lucky-me-pancit-canton”
     description: {
       type: String,
     },
@@ -18,6 +13,15 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
       min: 0,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    countInStock: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   { timestamps: true },
