@@ -7,6 +7,7 @@ import TextArea from "../components/TextArea";
 import slugify from "slugify";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
+import inventoryService from "../services/inventoryService.js";
 
 const Inventory = () => {
   const [formData, setFormData] = useState({
@@ -35,9 +36,32 @@ const Inventory = () => {
     e.preventDefault();
 
     try {
-      alert("Product Page");
+      // Set loading to true to show the spinner
+      setLoading(true);
+      
+      // Prepare the product data with the generated slug
+      const productData = {
+        name: formData.name,
+        slug: slug,
+        description: formData.description,
+        price: parseFloat(formData.price),
+        countInStock: 1,
+      };
+
+      // Call the service to save the product in MongoDB
+      await inventoryService.create(productData);
+      
+      // Show success message
+      alert("Product saved successfully!");
+      
+      // Reset the form
+      setFormData({ name: "", slug: "", description: "", price: 0 });
+      setSlug("");
     } catch (error) {
       setErrors({ error: error.message });
+    } finally {
+      // Stop loading regardless of success or failure
+      setLoading(false);
     }
   };
 

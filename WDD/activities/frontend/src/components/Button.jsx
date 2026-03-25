@@ -5,7 +5,7 @@ const Button = ({ children, loading, variant = "primary", ...props }) => {
     <button className={`btn btn-${variant}`} disabled={loading} {...props}>
       {loading ? (
         <>
-          <span className="spinner">Loading...</span>
+          <span className="spinner" aria-hidden="true"></span>
         </>
       ) : (
         children
